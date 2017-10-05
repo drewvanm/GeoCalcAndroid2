@@ -46,7 +46,7 @@ public class GeoCalcActivity extends AppCompatActivity {
             loc2.setLongitude(long2d);
 
             float distanceInMeters = loc1.distanceTo(loc2);
-            
+            distance.setText(Float.toString(distanceInMeters / 1000));
 
 
 
