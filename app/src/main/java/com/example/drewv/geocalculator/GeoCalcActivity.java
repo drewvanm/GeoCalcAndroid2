@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.view.View;
 import android.location.Location;
+import android.widget.Toast;
+
 
 import static com.example.drewv.geocalculator.R.id.distance;
 
@@ -34,7 +36,7 @@ public class GeoCalcActivity extends AppCompatActivity {
             double long1d = Double.parseDouble(long1.getText().toString());
             double long2d = Double.parseDouble(long2.getText().toString());
 
-
+            //Distance from location 1 to location 2
             Location loc1 = new Location("");
             loc1.setLatitude(lat1d);
             loc1.setLongitude(long1d);
@@ -43,6 +45,10 @@ public class GeoCalcActivity extends AppCompatActivity {
             loc2.setLatitude(lat2d);
             loc2.setLongitude(long2d);
 
+            
+
+
+            // Prints out the distance in Kilometers
             float distanceInMeters = loc1.distanceTo(loc2);
             float bearingInDegrees = loc1.bearingTo(loc2);
             //check which unit
@@ -52,6 +58,7 @@ public class GeoCalcActivity extends AppCompatActivity {
 
             distance.setText("Distance: " + Double.toString(roundedDistance));
             bearing.setText("Bearing: " + Double.toString(roundedBearing));
+
 
 
             // Makes the keyboard disapear when you click calculate
