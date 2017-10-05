@@ -29,8 +29,6 @@ public class GeoCalcActivity extends AppCompatActivity {
         Button calculate = (Button) findViewById(R.id.calculate);
         calculate.setOnClickListener(v -> {
 
-
-
             double lat1d = Double.parseDouble(lat1.getText().toString());
             double lat2d = Double.parseDouble(lat2.getText().toString());
             double long1d = Double.parseDouble(long1.getText().toString());
@@ -46,8 +44,14 @@ public class GeoCalcActivity extends AppCompatActivity {
             loc2.setLongitude(long2d);
 
             float distanceInMeters = loc1.distanceTo(loc2);
-            distance.setText(Float.toString(distanceInMeters / 1000));
+            float bearingInDegrees = loc1.bearingTo(loc2);
+            //check which unit
+            distanceInMeters = distanceInMeters / 1000;
+            double roundedDistance = (double) Math.round(distanceInMeters * 100) / 100;
+            double roundedBearing = (double) Math.round(bearingInDegrees * 100) / 100;
 
+            distance.setText("Distance: " + Double.toString(roundedDistance));
+            bearing.setText("Bearing: " + Double.toString(roundedBearing));
 
 
             // Makes the keyboard disapear when you click calculate
