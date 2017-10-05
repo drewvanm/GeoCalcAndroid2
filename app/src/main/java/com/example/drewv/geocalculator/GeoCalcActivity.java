@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.view.View;
-
+import android.location.Location;
 
 import static com.example.drewv.geocalculator.R.id.distance;
 
@@ -28,7 +28,27 @@ public class GeoCalcActivity extends AppCompatActivity {
         //Calculate Button
         Button calculate = (Button) findViewById(R.id.calculate);
         calculate.setOnClickListener(v -> {
-            lat1.setText("9");
+
+
+
+            double lat1d = Double.parseDouble(lat1.getText().toString());
+            double lat2d = Double.parseDouble(lat2.getText().toString());
+            double long1d = Double.parseDouble(long1.getText().toString());
+            double long2d = Double.parseDouble(long2.getText().toString());
+
+
+            Location loc1 = new Location("");
+            loc1.setLatitude(lat1d);
+            loc1.setLongitude(long1d);
+
+            Location loc2 = new Location("");
+            loc2.setLatitude(lat2d);
+            loc2.setLongitude(long2d);
+
+            float distanceInMeters = loc1.distanceTo(loc2);
+            
+
+
 
             // Makes the keyboard disapear when you click calculate
             View view = this.getCurrentFocus();
@@ -38,6 +58,9 @@ public class GeoCalcActivity extends AppCompatActivity {
             }
 
         });
+
+
+
 
 
 
